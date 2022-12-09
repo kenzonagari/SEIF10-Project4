@@ -13,7 +13,7 @@ module.exports = {
     }),
     animation: {
       none: 'none',
-      spin: 'spin 1s linear infinite',
+      spin: 'spin 20s linear infinite',
       ping: 'ping 1s cubic-bezier(0, 0, 0.2, 1) infinite',
       pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       bounce: 'bounce 1s infinite',
@@ -161,6 +161,18 @@ module.exports = {
       fuchsia: colors.fuchsia,
       pink: colors.pink,
       rose: colors.rose,
+      spray: {
+        '50': '#f0fdfb',
+        '100': '#cdfaf4',
+        '200': '#7ef2e4',
+        '300': '#60e8dd',
+        '400': '#2fd2c9',
+        '500': '#16b6b0',
+        '600': '#0f9291',
+        '700': '#107574',
+        '800': '#125d5d',
+        '900': '#144d4d',
+      },
     }),
     columns: {
       auto: 'auto',
