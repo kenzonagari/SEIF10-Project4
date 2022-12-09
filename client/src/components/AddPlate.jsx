@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import measurementUnit from "./foodMeasurementUnit";
+import IndivIngredientInput from "./IndivIngredientInput";
 
 export default function AddPlate () {
     const [data, setData] = useState([]);
-    const [ingredientForm, setIngredientForm] = useState([]);
     const [status, setStatus] = useState("");
-    const [ingredientNum, setIngredientNum] = useState(0)
+    const [ingredientNum, setIngredientNum] = useState(3)
 
     useEffect(() => {
         const controller = new AbortController();
@@ -48,71 +48,65 @@ export default function AddPlate () {
 
         let myFormData = new FormData(event.target);
         let ingredientObj = Object.fromEntries(myFormData.entries());
+        let ingredientStringArr = [];
 
-        console.log(ingredientObj)
+        for(let i = 1 ; i < ingredientNum+1 ; i++){
+            let str = "";
+            str = ingredientObj[`amount-${i}`] + " "+ ingredientObj[`unit-${i}`] + " " + ingredientObj[`ingredient-${i}`];
+            ingredientStringArr.push(str);
+        }
+
+        console.log(ingredientStringArr)
     }
 
     const handleAddIngredient = (event) => {
         event.preventDefault();
-        setIngredientForm([...ingredientForm, 
-            ingredientFormElementArray
-        ])
+        setIngredientNum(ingredientNum + 1);
     }
 
-    // const handleRemoveIngredient = () => {
-    //     setIngredientForm()
-    // }
-
-    const ingredientFormElementArray = [];
-    const measurementElement = measurementUnit.map((unit, index) => {
-        return(
-            <option value={unit} key={index}>{unit}</option>
-        )
-    })
-
-    for(let i = 0 ; i < 3 ; i++){
-        const ingredientFormElement = 
-            <div className="grid md:grid-cols-4 md:gap-6 my-2" key={i}>
-                <div className="col-span-2">
-                    <label htmlFor="small-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ingredient</label>
-                    <input required type="text" id="ingredient" name={`ingredient-${i+1}`} placeholder="e.g. rice" className="block p-2 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                </div>
-                <div className="">
-                    <label htmlFor="small-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Amount</label>
-                    <input required type="number" id="amount" name={`amount-${i+1}`} placeholder="1" className="block p-2 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                </div>
-                <div className="">
-                    <label htmlFor="small-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Unit</label>
-                    <select required id="unit" name={`unit-${i+1}`} placeholder="cup" className="block p-2 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option></option>
-                        {measurementElement}
-                    </select>
-                </div>
-            </div>;
-        ingredientFormElementArray.push(ingredientFormElement);
+    const handleRemoveIngredient = (event) => {
+        event.preventDefault();
+        if(ingredientNum !== 1){
+            setIngredientNum(ingredientNum - 1);
+        }
     }
 
+    const ingredientForm = [];
+
+    for(let i = 0 ; i < ingredientNum ; i++){
+        ingredientForm.push(<IndivIngredientInput key={i} num={i+1}/>)
+    }
+        
+    
     return(
         <>
-            <div className="bg-white w-2/5 h-fit p-10 mx-2 rounded-xl border border-gray-200 shadow-xl">
+            <div className="bg-white w-3/5 h-fit p-10 mx-2 rounded-xl border border-gray-200 shadow-xl flex flex-col items-center">
                 <h1 className="font-semibold leading-snug text-4xl mt-0 mb-3 text-center">Add A Plate</h1>
                 <p className="text-center">Hi, User! What'll be on your plate today?</p>
                 <form className="" onSubmit={handleSubmit}>
                     <div className="my-10">
-                        {ingredientFormElementArray}
                         {ingredientForm}
                     </div>
-                    <button 
-                        className="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                        onClick={handleAddIngredient}>
-                            Add Ingredient
-                    </button>
-                    <button 
-                        type="submit"
-                        className="text-white bg-spray-600 hover:bg-spray-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                    >
-                        Add Plate
-                    </button>
+                    <div className="text-center">
+                        <button 
+                            className="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                            onClick={handleAddIngredient}>
+                                Add Ingredient
+                        </button>
+                        {ingredientNum > 1 ? 
+                        <button 
+                            className="text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                            onClick={handleRemoveIngredient}>
+                                Remove Ingredient
+                        </button> : ""}
+                    </div>
+                    <div className="text-center">
+                        <button 
+                            type="submit"
+                            className="text-white bg-spray-600 hover:bg-spray-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-xl px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 my-5">
+                                Add Plate
+                        </button>
+                    </div>
                 </form>
             </div>
             {/* <div className="bg-white w-3/5 h-fit p-10 mx-2 rounded-xl border border-gray-200 shadow-xl overflow-hidden">

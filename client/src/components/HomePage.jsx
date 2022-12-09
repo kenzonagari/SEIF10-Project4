@@ -12,7 +12,7 @@ export default function HomePage () {
         <>
             <Navbar />
             <div className="flex flex-row justify-center items-start m-10 ">
-                <img src="/SVG/plate.svg" className="w-1/4 mr-10 drop-shadow-lg animate-spin"></img>
+                <img src="/SVG/plate.svg" className="w-1/4 mr-10 drop-shadow-lg animate-spin"/>
                 <Outlet />     
             </div>  
         </>
