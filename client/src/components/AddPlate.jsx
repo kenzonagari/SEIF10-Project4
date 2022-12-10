@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
-import measurementUnit from "./foodMeasurementUnit";
 import IndivIngredientInput from "./IndivIngredientInput";
 
 export default function AddPlate () {
     const [data, setData] = useState([]);
     const [status, setStatus] = useState("");
-    const [ingredientNum, setIngredientNum] = useState(3)
+    const [ingredientNum, setIngredientNum] = useState(3);
 
     useEffect(() => {
         const controller = new AbortController();
@@ -74,7 +73,7 @@ export default function AddPlate () {
     const ingredientForm = [];
 
     for(let i = 0 ; i < ingredientNum ; i++){
-        ingredientForm.push(<IndivIngredientInput key={i} num={i+1}/>)
+        ingredientForm.push(<IndivIngredientInput key={i} num={i+1} />)
     }
         
     
@@ -109,10 +108,6 @@ export default function AddPlate () {
                     </div>
                 </form>
             </div>
-            {/* <div className="bg-white w-3/5 h-fit p-10 mx-2 rounded-xl border border-gray-200 shadow-xl overflow-hidden">
-                <p>Nutritional info on:</p>
-                <p>{JSON.stringify(data)}</p>
-            </div> */}
         </>
     )
 }

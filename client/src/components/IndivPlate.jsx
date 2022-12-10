@@ -1,14 +1,24 @@
-export default function IndivPlate ({plate}) {
+export default function IndivPlate ({plate, handleNutrition}) {
 
     const ingredientElement = plate.map((ingr, index) => {
         return (
-                <p key={index}>{ingr}</p>
+                <p key={index} className="font-semibold">
+                    {ingr}
+                </p>
             )
         });
 
+    const handleNutritionIndiv = () => {
+        handleNutrition(plate);
+    }
+
     return(
-        <div className="flex flex-row overflow-visible m-5 p-8 rounded-3xl bg-gradient-to-b from-slate-300 to-slate-100">
-            <div className="flex flex-col">
+        <div 
+            onClick={handleNutritionIndiv}
+            className="flex flex-row items-center m-3 rounded-3xl bg-zinc-200 shadow-md border-4 border-gray-100 cursor-pointer transition ease-in-out hover:scale-105"
+        >
+            <img src="/svg/plate.svg" className="m-0 relative w-12 bottom-10 right-5 drop-shadow-md"/>
+            <div className="flex flex-col p-7 pl-0">
                 {ingredientElement}
             </div>
         </div>
