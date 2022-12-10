@@ -7,6 +7,9 @@ export default defineConfig({
     proxy: {
       "/api": "http://localhost:3000",
     },
+    watch: {
+      usePolling: true
+    }
   },
   plugins: [react()]
 })
