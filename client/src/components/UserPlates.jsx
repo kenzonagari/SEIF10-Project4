@@ -8,13 +8,12 @@ const seed = [
     ["1 kg salmon", "1 g rice", "10 g oat"],
     ["1 kg salmon", "1 g rice", "10 g boat"],
     ["1 kg salmon", "1 g rice", "10 g oat"],
-    ["1 kg salmon", "1 g rice", "1 L milk"]
+    ["1 g salmon", "1 g rice", "1 L milk"]
 ]
 export default function UserPlates ({}) {
     const [plateArray, setPlateArray] = useState([]);
 
     const handleNutrition = (plate) => {
-        console.log(plate);
         setPlateArray(plate);
     }
 

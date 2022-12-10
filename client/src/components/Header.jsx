@@ -12,7 +12,7 @@ export default function Header () {
                         </button>
                     </div> */}
                     <div className="-my-2 -mr-2">
-                        <h1 className="text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-5xl dark:text-white">GudFud</h1>
+                        <h1 className="text-4xl font-extralight tracking-tight leading-none text-gray-900 md:text-5xl lg:text-5xl dark:text-white">GudFud</h1>
                     </div>
                     <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
                         <a href="#" className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">Sign in</a>
