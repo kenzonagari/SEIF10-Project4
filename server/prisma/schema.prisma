@@ -11,7 +11,7 @@ datasource db {
 }
 
 model UserLogin {
-  id          Int          @id @default(autoincrement())
+  id          Int          @id @unique @default(autoincrement())
   username    String       @unique
   email       String       @unique
   password    String       @default("password123")
@@ -19,7 +19,7 @@ model UserLogin {
 }
 
 model UserProfile {
-  id          Int       @id @default(autoincrement())
+  id          Int       @id @unique @default(autoincrement())
   age         Int
   height      Int
   weight      Int
@@ -29,7 +29,7 @@ model UserProfile {
 }
 
 model Plate {
-  id            Int          @id @default(autoincrement())
+  id            Int          @id @unique @default(autoincrement())
   ingredients   String[]
   calories      Int
   UserProfile   UserProfile? @relation(fields: [userProfileId], references: [id])

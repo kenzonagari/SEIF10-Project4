@@ -38,25 +38,38 @@ router.get('/', async(req, res)=> {
 });
 
 //UPDATE
-router.put('/', async(req, res)=> {
-    const { ingredients, calories } = req.body;
-    const userProfileId = 3;
+router.put('/:id', async(req, res)=> {
+    const {calories, ingredients} = req.body;
+    const { id } = req.params;
     try {
-        const createPlate = await prisma.plate.update({
+        const updatePlate = await prisma.plate.update({
+            where:{
+                id: parseInt(id)
+            },
             data:{
-                ingredients: ingredients,
                 calories: calories,
-                userProfileId: userProfileId
+                ingredients: ingredients
             }
         });
-        res.status(200).json({msg: "plate created"});
+        res.status(200).json({msg: "plate updated"});
     } catch (error) {
         res.status(500).json({msg: error});
     }
 });
 
 //DELETE
-router.delete('/', async(req, res)=> {
+router.delete('/:id', async(req, res)=> {
+    const { id } = req.params;
+    try {
+        const deletePlate = await prisma.plate.delete({
+            where:{
+                id: parseInt(id)
+            }
+        });
+        res.status(200).json({msg: "plate deleted"});
+    } catch (error) {
+        res.status(500).json({msg: error});
+    }
 });
 
 // EXPORT
