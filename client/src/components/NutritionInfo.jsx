@@ -36,14 +36,13 @@ export default function NutritionInfo ({plateIngredients}) {
             }
             const data = await response.json();
             setData(data);
-            console.log(data)
+            console.log(data);
             setStatus("done");
         } catch (error) {
             setStatus("error");
             setData([]);
             console.log(error);
-        }
-        };
+        }};
 
         setStatus("loading");
         fetchData();
@@ -119,7 +118,7 @@ export default function NutritionInfo ({plateIngredients}) {
 
     return(
         <>
-        <div className="bg-white h-fit w-full m-20 my-10 p-10 rounded-xl border border-gray-200 shadow-xl snap-mandatory snap-y">
+        <div className="bg-white h-fit w-full m-10 p-10 rounded-xl border border-gray-200 shadow-xl snap-mandatory snap-y">
             <h1 className="font-semibold leading-snug text-xl mt-0 mb-3 text-center">Nutritional Values of</h1>
             <div className="flex flex-row justify-center">
                 {ingredientList}
@@ -152,7 +151,7 @@ export default function NutritionInfo ({plateIngredients}) {
                 </div>
             </div>
             <div className="m-20 snap-start">
-                <h1 className="font-extralight leading-snug text-2xl m-5 mt-6 text-center">As part of your day-to-day meals, this plate fulfills a certain amount of <br/>your daily nutritional requirement*. Let's take a look!</h1>
+                <h1 className="font-extralight leading-snug text-2xl m-5 mt-6 text-center">As part of your day-to-day meals, this plate fulfills a certain amount of <br/>your <b>daily nutritional requirement</b>*. Let's take a look!</h1>
                 <p className="font-extralight leading-snug text-md text-center">*Percent Daily Values are based on a 2000-calorie diet</p>
             </div>
             <div className="p-5">

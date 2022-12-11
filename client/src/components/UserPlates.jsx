@@ -6,12 +6,18 @@ const seed = [
     ["1 kg salmon", "1 g rice"],
     ["1 kg salmon", "1 g rice", "10 g oat"],
     ["1 kg salmon", "1 g rice", "10 g oat"],
-    ["1 kg salmon", "1 g rice", "10 g boat"],
     ["1 kg salmon", "1 g rice", "10 g oat"],
-    ["1 g salmon", "1 g rice", "1 L milk"]
+    ["1 g salmon", "1 g rice", "1 L milk"],
+    ["1/2 whole salmon", "1 cup rice", "1 ml milk", "1 whole apple"],
+    ["5 whole banana", "1 whole orange"]
 ]
-export default function UserPlates ({}) {
+export default function UserPlates ({handleImageSrc}) {
     const [plateArray, setPlateArray] = useState([]);
+
+    const handleImageSrcProps = () => {
+        handleImageSrc("/SVG/ricebowl.svg");
+    }
+    handleImageSrcProps();
 
     const handleNutrition = (plate) => {
         setPlateArray(plate);

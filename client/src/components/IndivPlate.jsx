@@ -2,7 +2,7 @@ export default function IndivPlate ({plate, handleNutrition}) {
 
     const ingredientElement = plate.map((ingr, index) => {
         return (
-                <p key={index} className="font-semibold">
+                <p key={index} className="font-normal text-right">
                     {ingr}
                 </p>
             )
