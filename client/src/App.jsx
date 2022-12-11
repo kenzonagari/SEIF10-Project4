@@ -14,16 +14,17 @@ import HomePage from './components/HomePage';
 import UserPlates from './components/UserPlates';
 import UserProfile from './components/UserProfile';
 
-const imgUrl = {
-  chickenBowl: "/SVG/chickenbowl.svg",
-  plate: "/SVG/plate.svg",
-  riceBowl: "/SVG/ricebowl.svg",
-  salmonBowl: "/SVG/salmonbowl.svg"
-}
+const imgUrl = [
+  "/SVG/chickenbowl.svg","/SVG/ricebowl.svg","/SVG/salmonbowl.svg"
+]
 
 function App() {
   const [count, setCount] = useState(0);
   const [imageSrc, setImageSrc] = useState(imgUrl.plate);
+
+  useEffect(() => {
+      setImageSrc(imgUrl[Math.floor(Math.random()*3)])
+  },[])
 
   const handleImageSrc = (str) => {
     useEffect(() => {

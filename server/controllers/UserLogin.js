@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const jwt = require("jsonwebtoken");
 
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
@@ -77,6 +78,12 @@ router.post('/signin', async(req, res) => {
             return res.status(401).json({msg: "Incorrect password"});
         };
 
+        const userToken = {
+            id: user.id,
+            username: user.username
+        };
+                
+        const accessToken = jwt.sign(userToken, process.env.ACCESS_TOKEN_SECRET);
         // req.session.isAuth = true;
         // req.session.isAuthAdmin = false;
         // req.session.user = {
@@ -93,7 +100,7 @@ router.post('/signin', async(req, res) => {
         //     return res.status(200).json({msg: "Redirecting to /createProfile"});
         // }
 
-        return res.status(200).json(user);
+        return res.status(200).json({user: user, accessToken: accessToken});
 
     } catch (error) {
         return res.status(500).json({msg: error});

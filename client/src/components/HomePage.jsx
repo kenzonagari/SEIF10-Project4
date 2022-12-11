@@ -18,7 +18,7 @@ export default function HomePage ({imageSrc, handleImageSrc}) {
             <Navbar />
             <div className="flex flex-col m-10">
                 <div className="flex flex-row justify-center items-start flex-wrap">
-                    <Link to="/addAPlate" className="w-1/4 mr-10 drop-shadow-lg animate-spinSlow cursor-pointer hover:scale-105 hover:animate-spin">
+                    <Link to="/addAPlate" className="w-1/4 mr-10 drop-shadow-lg cursor-pointer animate-spinSlow hover:scale-105 hover:animate-spin">
                         <img src={imageSrc} />
                     </Link>
                     <Outlet />     

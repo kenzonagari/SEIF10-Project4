@@ -57,15 +57,15 @@ export default function AddPlate ({handleImageSrc}) {
                     </div>
                     <div className="text-center">
                         <button 
-                            className="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                            className="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-black text-base rounded-full px-4 py-2 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                             onClick={handleAddIngredient}>
-                                Add Ingredient
+                                +
                         </button>
                         {ingredientNum > 1 ? 
                         <button 
-                            className="text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                            className="text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:ring-blue-300 font-black text-base rounded-full px-4 py-2 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                             onClick={handleRemoveIngredient}>
-                                Remove Ingredient
+                                -
                         </button> : ""}
                     </div>
                     <div className="text-center">
