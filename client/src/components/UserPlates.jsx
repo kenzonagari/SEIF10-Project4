@@ -85,8 +85,8 @@ export default function UserPlates ({handleImageSrc}) {
     return(
         <>
             <div className="bg-white w-3/5 h-fit p-10 mx-2 rounded-xl border border-gray-200 shadow-xl">
-                <h1 className="font-semibold leading-snug text-4xl mt-0 mb-3 text-center">User's Plates</h1>
-                <p className="font-normal leading-snug text-md mt-0 mb-5 text-center">Click on a plate to find their nutritional info!</p>
+                <h1 className="text-4xl font-bold tracking-tight mt-0 mb-3 text-center">{data[0]?.username?.username}'s Plates</h1>
+                <p className="font-normal leading-snug text-md mt-0 mb-5 text-center">Click on a plate to find its nutritional info!</p>
                 <div className="flex flex-row flex-wrap justify-center">
                     {plateElement}
                 </div>

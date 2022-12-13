@@ -72,7 +72,7 @@ export default function AddPlate ({handleImageSrc}) {
     return(
         <>
             <div className="bg-white w-3/5 h-fit p-10 mx-2 rounded-xl border border-gray-200 shadow-xl flex flex-col items-center">
-                <h1 className="font-semibold leading-snug text-4xl mt-0 mb-3 text-center">Add A Plate</h1>
+                <h1 className="text-4xl font-bold tracking-tight mt-0 mb-3 text-center">Add A Plate</h1>
                 <form className="" onSubmit={handleSubmit}>
                     <div className="my-10">
                         {ingredientForm}

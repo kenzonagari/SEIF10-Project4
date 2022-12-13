@@ -84,7 +84,7 @@ export default function CreateProfile () {
 
     return(
         <div className="bg-white w-fit h-fit p-10 m-auto my-10 rounded-xl border border-gray-200 shadow-xl">
-            <h1 className="font-semibold leading-snug text-4xl text-center">Complete User Profile</h1>
+            <h1 className="text-4xl font-bold tracking-tight text-center">Complete User Profile</h1>
             
             <div className="overflow-x-auto relative sm:rounded-lg">
                 <form onSubmit={handleSubmit}>

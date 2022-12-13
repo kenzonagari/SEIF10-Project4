@@ -32,7 +32,7 @@ export default function IndivPlate ({plate, handleNutrition, plateId}) {
                 </div>
                 <div className="text-right">
                     <button onClick={handleUpdatePlate} className="text-white text-sm bg-teal-500 hover:bg-teal-600 font-semibold w-fit p-2 px-3 m-2 rounded-full">
-                        Edit Plate
+                        Edit
                     </button>
                 </div>
             </div>

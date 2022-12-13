@@ -92,23 +92,23 @@ export default function UpdatePlate ({handleImageSrc}) {
             calories: 0
         };
 
-        // fetch('/api/plate', {    
-        //     method: "POST", 
-        //     headers: {
-        //                 "Content-type": "application/json", //* vvvvv important, otherwise server receives empty object
-        //                 "x-access-token": localStorage.getItem("token")
-        //             },
-        //     body: JSON.stringify(addPlateObj) 
-        // })
-        // .then((response) => {
-        //     return response.json();
-        // })
-        // .then((data) => {
-        //     if(data.msg === 'plate created'){
-        //         navigate("/userPlates");
-        //     }
-        //     console.log(data)
-        // });
+        fetch(`/api/plate/${plateId}`, {    
+            method: "PUT", 
+            headers: {
+                        "Content-type": "application/json", //* vvvvv important, otherwise server receives empty object
+                        "x-access-token": localStorage.getItem("token")
+                    },
+            body: JSON.stringify(addPlateObj) 
+        })
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            if(data.msg === 'plate updated'){
+                navigate("/userPlates");
+            }
+            console.log(data)
+        });
     }
 
     const handleImageSrcProps = () => {
@@ -137,7 +137,7 @@ export default function UpdatePlate ({handleImageSrc}) {
     return(
         <>
             <div className="bg-white w-3/5 h-fit p-10 mx-2 rounded-xl border border-gray-200 shadow-xl flex flex-col items-center">
-                <h1 className="font-semibold leading-snug text-4xl mt-0 mb-3 text-center">Edit Plate</h1>
+                <h1 className="text-4xl font-bold tracking-tight mt-0 mb-3 text-center">Edit Plate</h1>
                 <form className="" onSubmit={handleSubmit}>
                     <div className="my-10">
                         {ingredientForm}
