@@ -15,7 +15,7 @@ export default function Header () {
                     </div> */}
                     <Link to="/home">
                         <div className="-my-2 -mr-2">
-                            <h1 className="text-4xl font-normal tracking-tighter leading-none text-spray-900 md:text-5xl lg:text-5xl dark:text-white">GudFud</h1>
+                            <h1 className="text-4xl font-normal tracking-tighter leading-none text-gray-900-900 md:text-5xl lg:text-5xl dark:text-white">GudFud</h1>
                         </div>
                     </Link>
                     <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
