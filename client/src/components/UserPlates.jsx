@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import IndivPlate from "./IndivPlate"
 import NutritionInfo from "./NutritionInfo";
 
@@ -6,21 +6,77 @@ const seed = [
     ["1 kg salmon", "1 g rice"],
     ["1 kg salmon", "1 g rice", "10 g oat"],
     ["1 kg salmon", "1 g rice", "10 g oat"],
-    ["1 kg salmon", "1 g rice", "10 g boat"],
     ["1 kg salmon", "1 g rice", "10 g oat"],
-    ["1 kg salmon", "1 g rice", "1 L milk"]
+    ["1 g salmon", "1 g rice", "1 L milk"],
+    ["1/2 whole salmon", "1 cup rice", "1 ml milk", "1 whole apple"],
+    ["5 whole banana", "1 whole orange"]
 ]
-export default function UserPlates ({}) {
+export default function UserPlates ({handleImageSrc}) {
     const [plateArray, setPlateArray] = useState([]);
+    const [data, setData] = useState([]);
+    const [plates, setPlates] = useState([]);
+    const [platesId, setPlatesId] = useState([])
+    const [status, setStatus] = useState("");
+    const [showNutrition, setShowNutrition] = useState(true);
+    
+    useEffect(() => {
+        const controller = new AbortController();
+        const { signal } = controller;
+
+        const fetchData = async () => {
+        try {
+            const response = await fetch(
+              `/api/userprofile`,
+              {
+                signal,
+                headers: {
+                  "Content-Type": "application/json",
+                  "x-access-token": localStorage.getItem("token")
+                }
+              }
+            );
+            if (!response.ok) {
+              throw new Error("Network error");
+            }
+            const data = await response.json();
+            setData(data);
+            const platesTemp = [];
+            const platesIdTemp = [];
+            for(const element of data[0].plates){
+                platesTemp.push(element.ingredients);
+                platesIdTemp.push(element.id);
+            }
+            setPlates(platesTemp);
+            setPlatesId(platesIdTemp);
+            setStatus("done");
+        } catch (error) {
+            setStatus("error");
+            setData([]);
+            console.log(error);
+        }};
+
+        setStatus("loading");
+        fetchData();
+    
+        return () => {
+          //   console.log("cleanup");
+          controller.abort();
+        };
+
+    }, []);
+
+    const handleImageSrcProps = () => {
+        handleImageSrc("/SVG/ricebowl.svg");
+    }
+    handleImageSrcProps();
 
     const handleNutrition = (plate) => {
-        console.log(plate);
         setPlateArray(plate);
     }
 
-    const plateElement = seed.map((plate, index) => {
+    const plateElement = plates.map((plate, index) => {
         return(
-            <IndivPlate plate={plate} key={index} handleNutrition={handleNutrition}/>
+            <IndivPlate plate={plate} key={index} handleNutrition={handleNutrition} plateId={platesId[index]}/>
         )
     })
 
@@ -35,7 +91,7 @@ export default function UserPlates ({}) {
                     {plateElement}
                 </div>
             </div>
-            {plateArray.length > 0 ? nutritionInfoComp : ""}
+            {plateArray.length > 0 && showNutrition? nutritionInfoComp : ""}
         </>    
  
     )
