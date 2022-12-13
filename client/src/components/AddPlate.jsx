@@ -78,22 +78,22 @@ export default function AddPlate ({handleImageSrc}) {
                         {ingredientForm}
                     </div>
                     <div className="text-center">
-                        <button 
-                            className="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-black text-base rounded-full px-4 py-2 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                            onClick={handleAddIngredient}>
-                                +
-                        </button>
                         {ingredientNum > 1 ? 
                         <button 
-                            className="text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:ring-blue-300 font-black text-base rounded-full px-4 py-2 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                            className="text-white bg-rose-500 hover:bg-rose-800 focus:ring-4 focus:ring-blue-300 font-black text-xl rounded-full w-10 h-10 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                             onClick={handleRemoveIngredient}>
                                 -
                         </button> : ""}
+                        <button 
+                            className="text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:ring-blue-300 font-black text-xl rounded-full w-10 h-10 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                            onClick={handleAddIngredient}>
+                                +
+                        </button>
                     </div>
                     <div className="text-center">
                         <button 
                             type="submit"
-                            className="text-white bg-spray-600 hover:bg-spray-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-xl px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 my-5">
+                            className="text-white bg-spray-600 hover:bg-spray-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-base px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 my-5">
                                 Add Plate
                         </button>
                     </div>

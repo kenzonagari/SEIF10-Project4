@@ -24,7 +24,13 @@ export default function CreateProfile () {
               }
             );
             if (!response.ok) {
-              throw new Error("Network error");
+                if(response.status === 401){
+                    return navigate("/signUp");
+                }
+                if(response.status === 403){
+                    return navigate("/home");
+                }
+                throw new Error("Network error");
             }
             const data = await response.json();
             setData(data);

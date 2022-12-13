@@ -14,6 +14,7 @@ import Header from './components/Header';
 import HomePage from './components/HomePage';
 import SignIn from './components/Signin';
 import SignUp from './components/Signup';
+import UpdatePlate from './components/UpdatePlate';
 import UserPlates from './components/UserPlates';
 import UserProfile from './components/UserProfile';
 
@@ -49,6 +50,7 @@ function App() {
               <Route path="addAPlate" element={<AddPlate handleImageSrc={handleImageSrc}/>}/>
               <Route path="userPlates" element={<UserPlates handleImageSrc={handleImageSrc}/>}/>
               <Route path="userProfile" element={<UserProfile handleImageSrc={handleImageSrc}/>}/>
+              <Route path="updatePlate/:plateId" element={<UpdatePlate handleImageSrc={handleImageSrc}/>}/>
             </Route>
           </Routes>
         </BrowserRouter>

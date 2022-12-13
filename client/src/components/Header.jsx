@@ -15,7 +15,7 @@ export default function Header () {
                     </div> */}
                     <Link to="/home">
                         <div className="-my-2 -mr-2">
-                            <h1 className="text-4xl font-extralight tracking-tight leading-none text-gray-900 md:text-5xl lg:text-5xl dark:text-white">GudFud</h1>
+                            <h1 className="text-4xl font-normal tracking-tighter leading-none text-spray-900 md:text-5xl lg:text-5xl dark:text-white">GudFud</h1>
                         </div>
                     </Link>
                     <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
@@ -23,7 +23,7 @@ export default function Header () {
                             <div className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">Sign In</div>
                         </Link>
                         <Link to="/signUp">
-                            <div className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-spray-700 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-spray-800">Sign Up</div>
+                            <div className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700">Sign Up</div>
                         </Link>
                     </div>
                 </div>

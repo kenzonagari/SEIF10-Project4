@@ -15,6 +15,7 @@ export default function UserPlates ({handleImageSrc}) {
     const [plateArray, setPlateArray] = useState([]);
     const [data, setData] = useState([]);
     const [plates, setPlates] = useState([]);
+    const [platesId, setPlatesId] = useState([])
     const [status, setStatus] = useState("");
     const [showNutrition, setShowNutrition] = useState(true);
     
@@ -40,11 +41,13 @@ export default function UserPlates ({handleImageSrc}) {
             const data = await response.json();
             setData(data);
             const platesTemp = [];
+            const platesIdTemp = [];
             for(const element of data[0].plates){
                 platesTemp.push(element.ingredients);
+                platesIdTemp.push(element.id);
             }
             setPlates(platesTemp);
-            console.log(data);
+            setPlatesId(platesIdTemp);
             setStatus("done");
         } catch (error) {
             setStatus("error");
@@ -73,7 +76,7 @@ export default function UserPlates ({handleImageSrc}) {
 
     const plateElement = plates.map((plate, index) => {
         return(
-            <IndivPlate plate={plate} key={index} handleNutrition={handleNutrition} />
+            <IndivPlate plate={plate} key={index} handleNutrition={handleNutrition} plateId={platesId[index]}/>
         )
     })
 

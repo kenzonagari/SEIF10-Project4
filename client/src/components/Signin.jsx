@@ -20,7 +20,6 @@ export default function SignIn() {
         let userLoginObj = Object.fromEntries(myFormData.entries());
         let loginIsValid = false;
 
-        // console.log(userLoginObj);
         loginIsValid = true;
 
         //* only fire off request when input is valid:

@@ -39,7 +39,6 @@ export default function SignUp() {
             loginIsValid = true;
         }
 
-        console.log(userSignUpObj)
         //* only fire off request when input is valid:
         if(loginIsValid){
             fetch('/api/userlogin/signup', {   method: "POST", 
@@ -86,7 +85,7 @@ export default function SignUp() {
           <div className="w-full max-w-md space-y-8">
             <div>
               <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
-                Create an account. <br/> Good food awaits!
+                Create an account.<br/>Find out what's on your plate.
               </h2>
               <p className="mt-2 text-center text-sm text-gray-600">
                 or{' '}

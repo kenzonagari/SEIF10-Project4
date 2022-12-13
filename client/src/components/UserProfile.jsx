@@ -155,12 +155,12 @@ export default function UserProfile ({handleImageSrc}) {
                 <button 
                 type="button"
                 onClick={handleTurnOnUpdateProfile(false)}
-                className="text-white bg-spray-600 hover:bg-red-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-lg px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 my-5">
+                className="text-white bg-spray-600 hover:bg-red-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-base px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 my-5">
                     Cancel
                 </button>
                 <button 
                 type="submit"
-                className="text-white bg-spray-600 hover:bg-spray-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-lg px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 my-5">
+                className="text-white bg-spray-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-base px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 my-5">
                     Submit
                 </button>
             </div>
@@ -180,7 +180,7 @@ export default function UserProfile ({handleImageSrc}) {
                     <button 
                         type="button"
                         onClick={handleTurnOnUpdateProfile(true)}
-                        className="text-white bg-spray-600 hover:bg-spray-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-lg px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 my-5">
+                        className="text-white bg-spray-600 hover:bg-spray-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-base px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 my-5">
                             Update Profile
                     </button>
                 }

@@ -167,7 +167,9 @@ export default function NutritionInfo ({plateIngredients, handleShowNutrition}) 
             <div className="flex flex-row justify-center items-center flex-wrap">
                 {nutrientOver100Element}
             </div>
+            {nutrientOver100.length > 0 ?
             <h1 className="font-extralight leading-snug text-2xl m-5 mt-6 text-center">Good job! But remember that moderation is key. </h1>
+            : ""}
         </div>
         <div className="m-20 snap-start">
             <h1 className="font-extralight leading-snug text-2xl m-5 mt-6 text-center">...and here are the specific nutrients you can afford to have more of for the day.</h1>

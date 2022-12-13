@@ -41,7 +41,6 @@ router.post('/', authenticateToken, async(req, res)=> {
 router.get('/', authenticateToken, async(req, res)=> {
     const userLoginId = req.user.id;
     const userProfileId = req.user.userProfileId;
-    console.log(userProfileId)
     if(!userProfileId){
         return res.status(403).json({msg: "redirecting to /createProfile"});
     }

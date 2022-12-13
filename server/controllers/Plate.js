@@ -39,6 +39,20 @@ router.get('/', authenticateToken, async(req, res)=> {
     }
 });
 
+router.get('/:id', authenticateToken, async(req, res)=> {
+    const { id } = req.params;
+    try {
+        const findPlate = await prisma.plate.findUnique({
+            where:{
+                id: parseInt(id)
+            }
+        });
+        res.status(200).json(findPlate);
+    } catch (error) {
+        res.status(500).json({msg: error});
+    }
+});
+
 //UPDATE
 router.put('/:id', authenticateToken, async(req, res)=> {
     const {calories, ingredients} = req.body;
