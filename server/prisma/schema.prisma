@@ -31,7 +31,7 @@ model UserProfile {
 model Plate {
   id            Int          @id @unique @default(autoincrement())
   ingredients   String[]
-  calories      Int
+  calories      Int          @default(0)
   UserProfile   UserProfile? @relation(fields: [userProfileId], references: [id])
   userProfileId Int
 }

@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import IndivIngredientInput from "./IndivIngredientInput";
 
 export default function AddPlate ({handleImageSrc}) {
     const [data, setData] = useState([]);
     const [status, setStatus] = useState("");
     const [ingredientNum, setIngredientNum] = useState(3);
+    const navigate = useNavigate();
 
     const handleImageSrcProps = () => {
         handleImageSrc("/SVG/chickenbowl.svg");
@@ -24,7 +26,28 @@ export default function AddPlate ({handleImageSrc}) {
             ingredientStringArr.push(str);
         }
 
-        console.log(ingredientStringArr)
+        const addPlateObj = {
+            ingredients: ingredientStringArr,
+            calories: 0
+        };
+
+        fetch('/api/plate', {    
+            method: "POST", 
+            headers: {
+                        "Content-type": "application/json", //* vvvvv important, otherwise server receives empty object
+                        "x-access-token": localStorage.getItem("token")
+                    },
+            body: JSON.stringify(addPlateObj) 
+        })
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            if(data.msg === 'plate created'){
+                navigate("/userPlates");
+            }
+            console.log(data)
+        });
     }
 
     const handleAddIngredient = (event) => {
@@ -50,7 +73,6 @@ export default function AddPlate ({handleImageSrc}) {
         <>
             <div className="bg-white w-3/5 h-fit p-10 mx-2 rounded-xl border border-gray-200 shadow-xl flex flex-col items-center">
                 <h1 className="font-semibold leading-snug text-4xl mt-0 mb-3 text-center">Add A Plate</h1>
-                <p className="text-center">Hi, User! What'll be on your plate today?</p>
                 <form className="" onSubmit={handleSubmit}>
                     <div className="my-10">
                         {ingredientForm}

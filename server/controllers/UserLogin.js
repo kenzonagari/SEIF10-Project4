@@ -7,6 +7,7 @@ const prisma = new PrismaClient();
 
 //* bcrypt dependencies
 const bcrypt = require("bcrypt");
+const authenticateToken = require("../middlewares/authenticateToken");
 const saltRounds = 10;
 
 
@@ -78,29 +79,37 @@ router.post('/signin', async(req, res) => {
             return res.status(401).json({msg: "Incorrect password"});
         };
 
-        const userToken = {
-            id: user.id,
-            username: user.username
-        };
-                
-        const accessToken = jwt.sign(userToken, process.env.ACCESS_TOKEN_SECRET);
-        // req.session.isAuth = true;
-        // req.session.isAuthAdmin = false;
-        // req.session.user = {
-        //     _id: user._id,
-        //     username: user.username,
-        //     password: user.password
-        // };
+        let checkUserProfile = await prisma.userProfile.findUnique({
+            where:{ 
+                userLoginId: user.id
+            }
+        });
 
-        // let checkUserProfile = await UserProfile.findOne({ "loginInfo": req.session.user._id });
+        if(checkUserProfile){
 
-        // if(checkUserProfile){
-        //     return res.status(200).json({msg: "Redirecting to /home"});
-        // } else {
-        //     return res.status(200).json({msg: "Redirecting to /createProfile"});
-        // }
+            const userToken = {
+                id: user.id,
+                username: user.username,
+                userProfileId: checkUserProfile.id
+            };
+            
+            //create + assign a token
+            const accessToken = jwt.sign(userToken, process.env.ACCESS_TOKEN_SECRET);
 
-        return res.status(200).json({user: user, accessToken: accessToken});
+            return res.status(200).header('auth-token', accessToken).json({msg: "Redirecting to /home", authToken: accessToken});
+        
+        } else {
+
+            const userToken = {
+                id: user.id,
+                username: user.username
+            };
+            
+            //create + assign a token
+            const accessToken = jwt.sign(userToken, process.env.ACCESS_TOKEN_SECRET);
+
+            return res.status(200).header('auth-token', accessToken).json({msg: "Redirecting to /createProfile", authToken: accessToken});
+        }
 
     } catch (error) {
         return res.status(500).json({msg: error});
@@ -126,18 +135,22 @@ router.post('/signin', async(req, res) => {
 //     }
 // });
 
-// router.get('/', isAuth, async(req, res) => {
-//     try {
-//         const userLoginInfo = await UserLogin.find({ "_id" : req.session.user._id }).exec();
-//         if (userLoginInfo === null) {
-//             res.status(400).json({msg: "Wrong ID"});
-//         } else {
-//             res.status(200).json(userLoginInfo);
-//         }
-//     } catch (error) {
-//         res.status(500).json({msg: error});
-//     }
-// });
+router.get('/signin', authenticateToken, async(req, res) => {
+    try {
+        const userLoginInfo = await prisma.userLogin.findUnique({
+            where:{ 
+                "id" : req.user.id
+            }
+        });
+        if (userLoginInfo === null) {
+            res.status(400).json({msg: "Wrong ID"});
+        } else {
+            res.status(200).json(userLoginInfo);
+        }
+    } catch (error) {
+        res.status(500).json({msg: error});
+    }
+});
 
 //UPDATE
 router.put('/', async(req, res)=> {

@@ -4,10 +4,12 @@ const router = express.Router();
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
+const authenticateToken = require("../middlewares/authenticateToken.js");
+
 //CREATE
-router.post('/', async(req, res)=> {
+router.post('/', authenticateToken, async(req, res)=> {
     const { ingredients, calories } = req.body;
-    const userProfileId = 3;
+    const userProfileId = req.user.userProfileId;
     try {
         const createPlate = await prisma.plate.create({
             data:{
@@ -23,8 +25,8 @@ router.post('/', async(req, res)=> {
 });
 
 //READ
-router.get('/', async(req, res)=> {
-    const userProfileId = 3;
+router.get('/', authenticateToken, async(req, res)=> {
+    const userProfileId = req.user.userProfileId;
     try {
         const findPlate = await prisma.plate.findMany({
             where:{
@@ -38,7 +40,7 @@ router.get('/', async(req, res)=> {
 });
 
 //UPDATE
-router.put('/:id', async(req, res)=> {
+router.put('/:id', authenticateToken, async(req, res)=> {
     const {calories, ingredients} = req.body;
     const { id } = req.params;
     try {
@@ -58,7 +60,7 @@ router.put('/:id', async(req, res)=> {
 });
 
 //DELETE
-router.delete('/:id', async(req, res)=> {
+router.delete('/:id', authenticateToken, async(req, res)=> {
     const { id } = req.params;
     try {
         const deletePlate = await prisma.plate.delete({

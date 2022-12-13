@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import IndivPlate from "./IndivPlate"
 import NutritionInfo from "./NutritionInfo";
 
@@ -13,6 +13,54 @@ const seed = [
 ]
 export default function UserPlates ({handleImageSrc}) {
     const [plateArray, setPlateArray] = useState([]);
+    const [data, setData] = useState([]);
+    const [plates, setPlates] = useState([]);
+    const [status, setStatus] = useState("");
+    const [showNutrition, setShowNutrition] = useState(true);
+    
+    useEffect(() => {
+        const controller = new AbortController();
+        const { signal } = controller;
+
+        const fetchData = async () => {
+        try {
+            const response = await fetch(
+              `/api/userprofile`,
+              {
+                signal,
+                headers: {
+                  "Content-Type": "application/json",
+                  "x-access-token": localStorage.getItem("token")
+                }
+              }
+            );
+            if (!response.ok) {
+              throw new Error("Network error");
+            }
+            const data = await response.json();
+            setData(data);
+            const platesTemp = [];
+            for(const element of data[0].plates){
+                platesTemp.push(element.ingredients);
+            }
+            setPlates(platesTemp);
+            console.log(data);
+            setStatus("done");
+        } catch (error) {
+            setStatus("error");
+            setData([]);
+            console.log(error);
+        }};
+
+        setStatus("loading");
+        fetchData();
+    
+        return () => {
+          //   console.log("cleanup");
+          controller.abort();
+        };
+
+    }, []);
 
     const handleImageSrcProps = () => {
         handleImageSrc("/SVG/ricebowl.svg");
@@ -23,9 +71,9 @@ export default function UserPlates ({handleImageSrc}) {
         setPlateArray(plate);
     }
 
-    const plateElement = seed.map((plate, index) => {
+    const plateElement = plates.map((plate, index) => {
         return(
-            <IndivPlate plate={plate} key={index} handleNutrition={handleNutrition}/>
+            <IndivPlate plate={plate} key={index} handleNutrition={handleNutrition} />
         )
     })
 
@@ -40,7 +88,7 @@ export default function UserPlates ({handleImageSrc}) {
                     {plateElement}
                 </div>
             </div>
-            {plateArray.length > 0 ? nutritionInfoComp : ""}
+            {plateArray.length > 0 && showNutrition? nutritionInfoComp : ""}
         </>    
  
     )
