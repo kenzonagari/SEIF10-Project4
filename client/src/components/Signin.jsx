@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Header from "./Header";
 
 const warningText = {
     emailNotFound: "Email address or username not found. Please check and try again.",
@@ -68,6 +69,7 @@ export default function SignIn() {
 
     return (
     <>
+        <Header signedIn={false}/>
         <div className="flex justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
             <div>

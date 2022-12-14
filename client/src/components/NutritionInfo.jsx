@@ -213,7 +213,7 @@ export default function NutritionInfo ({plateIngredients, handleShowNutrition}) 
 
     return(
         <>
-        <div className="bg-white h-fit w-full m-10 p-10 rounded-xl border border-gray-200 shadow-xl snap-mandatory snap-y">
+        <div className="p-10 ">
             <h1 className="font-semibold leading-snug text-xl mt-0 mb-3 text-center">Nutritional Values of</h1>
             <div className="flex flex-row justify-center">
                 {ingredientList}

@@ -100,7 +100,10 @@ router.post('/signin', async (req, res) => {
             //create + assign a token
             const accessToken = jwt.sign(
                 userToken,
-                process.env.ACCESS_TOKEN_SECRET
+                process.env.ACCESS_TOKEN_SECRET,
+                {
+                    expiresIn: '1h'
+                }
             );
 
             return res
@@ -116,7 +119,10 @@ router.post('/signin', async (req, res) => {
             //create + assign a token
             const accessToken = jwt.sign(
                 userToken,
-                process.env.ACCESS_TOKEN_SECRET
+                process.env.ACCESS_TOKEN_SECRET,
+                {
+                    expiresIn: '1h'
+                }
             );
 
             return res
@@ -133,7 +139,7 @@ router.post('/signin', async (req, res) => {
 });
 
 //READ
-// router.get('/signout', async(req, res) => {
+// router.get('/signout', authenticateToken, async(req, res) => {
 //     try {
 //         if(req.session){
 //             req.session.destroy((err) => {

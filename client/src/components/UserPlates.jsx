@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import IndivPlate from "./IndivPlate"
 import NutritionInfo from "./NutritionInfo";
 
@@ -18,6 +18,7 @@ export default function UserPlates ({handleImageSrc}) {
     const [platesId, setPlatesId] = useState([])
     const [status, setStatus] = useState("");
     const [showNutrition, setShowNutrition] = useState(true);
+    const bottomRef = useRef(null);
     
     useEffect(() => {
         const controller = new AbortController();
@@ -74,13 +75,18 @@ export default function UserPlates ({handleImageSrc}) {
         setPlateArray(plate);
     }
 
+    const handleScrollToSection = () => {
+        bottomRef.current?.scrollIntoView({behavior: 'smooth'})
+    }
+
     const plateElement = plates.map((plate, index) => {
         return(
-            <IndivPlate plate={plate} key={index} handleNutrition={handleNutrition} plateId={platesId[index]}/>
+            <IndivPlate plate={plate} key={index} handleNutrition={handleNutrition} plateId={platesId[index]} handleScrollToSection={handleScrollToSection}/>
         )
     })
 
-    const nutritionInfoComp = <NutritionInfo plateIngredients={plateArray}/>
+    const nutritionInfoComp = <NutritionInfo plateIngredients={plateArray}/>;
+        
 
     return(
         <>
@@ -91,7 +97,9 @@ export default function UserPlates ({handleImageSrc}) {
                     {plateElement}
                 </div>
             </div>
-            {plateArray.length > 0 && showNutrition? nutritionInfoComp : ""}
+            <div ref={bottomRef} className="bg-white h-fit w-full m-10 rounded-xl shadow-xl">
+                {plateArray.length > 0 && showNutrition? nutritionInfoComp : ""}
+            </div>
         </>    
  
     )

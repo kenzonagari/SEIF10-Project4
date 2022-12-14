@@ -29,7 +29,10 @@ router.post('/', authenticateToken, async(req, res)=> {
         };
         
         //create + assign a token
-        const accessToken = jwt.sign(userToken, process.env.ACCESS_TOKEN_SECRET);
+        const accessToken = jwt.sign(userToken, process.env.ACCESS_TOKEN_SECRET,
+            {
+                expiresIn: '1h'
+            });
 
         res.status(200).header('auth-token', accessToken).json({msg: "user profile created", authToken: accessToken});
     } catch (error) {
