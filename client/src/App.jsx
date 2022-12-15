@@ -51,7 +51,7 @@ function App() {
               <Route path="userProfile" element={<UserProfile handleImageSrc={handleImageSrc}/>}/>
               <Route path="updatePlate/:plateId" element={<UpdatePlate handleImageSrc={handleImageSrc}/>}/>
             </Route>
-            <Route path="/*" element={ <Navigate to="/signUp" /> }/>
+            <Route path="/*" element={ <Navigate to="/home" /> }/>
           </Routes>
         </BrowserRouter>
       </div>
