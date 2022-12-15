@@ -1,9 +1,8 @@
 {  
   "scripts": {
     "dev": "turbo run dev",
+    "install": "cd client && npm update && cd.. && cd server && npm update",
     "build": "turbo run build",
-    "clientinstall": "cd client && npm install",
-    "serverinstall": "cd server && npm install",
     "start": "cd server && npm run start"
   },
   "devDependencies": {
