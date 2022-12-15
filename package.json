@@ -2,8 +2,9 @@
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
-    "start": "cd server && npm run start",
-    "postinstall": "(cd server && npm install)"
+    "clientinstall": "cd client && npm install",
+    "serverinstall": "cd server && npm install",
+    "start": "cd server && npm run start"
   },
   "devDependencies": {
     "turbo": "^1.6.3"
