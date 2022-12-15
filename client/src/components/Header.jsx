@@ -16,7 +16,7 @@ export default function Header ({signedIn}) {
                 <div className="flex items-center justify-between py-6 md:justify-start md:space-x-10">
                     <Link to="/home">
                         <div className="-my-2 -mr-2">
-                            <h1 className="text-4xl font-normal tracking-tighter leading-none text-gray-900-900 md:text-5xl lg:text-5xl dark:text-white">GudFud</h1>
+                            <h1 className="text-gray-700 hover:drop-shadow text-4xl font-normal tracking-tighter leading-none text-gray-900-900 md:text-5xl lg:text-5xl dark:text-white">GudFud</h1>
                         </div>
                     </Link>
 

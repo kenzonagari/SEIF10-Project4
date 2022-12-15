@@ -11,11 +11,13 @@ const seed = [
     ["1/2 whole salmon", "1 cup rice", "1 ml milk", "1 whole apple"],
     ["5 whole banana", "1 whole orange"]
 ]
+
 export default function UserPlates ({handleImageSrc}) {
     const [plateArray, setPlateArray] = useState([]);
     const [data, setData] = useState([]);
     const [plates, setPlates] = useState([]);
-    const [platesId, setPlatesId] = useState([])
+    const [platesId, setPlatesId] = useState([]);
+    const [bmi, setBmi] = useState([]);
     const [status, setStatus] = useState("");
     const [showNutrition, setShowNutrition] = useState(true);
     const bottomRef = useRef(null);
@@ -49,6 +51,7 @@ export default function UserPlates ({handleImageSrc}) {
             }
             setPlates(platesTemp);
             setPlatesId(platesIdTemp);
+            setBmi(((data[0]?.weight / data[0]?.height / data[0]?.height) * 10000).toFixed(1));
             setStatus("done");
         } catch (error) {
             setStatus("error");
@@ -85,7 +88,7 @@ export default function UserPlates ({handleImageSrc}) {
         )
     })
 
-    const nutritionInfoComp = <NutritionInfo plateIngredients={plateArray}/>;
+    const nutritionInfoComp = <NutritionInfo plateIngredients={plateArray} bmi={bmi}/>;
         
 
     return(
