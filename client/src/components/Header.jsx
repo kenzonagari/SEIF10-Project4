@@ -5,7 +5,6 @@ export default function Header ({signedIn}) {
     const navigate = useNavigate();
     
     const handleSignOut = () => {
-        console.log(101);
         localStorage.removeItem("token");
         navigate("/signUp");
     }
