@@ -24,9 +24,9 @@ const Plate = require('./controllers/Plate.js');
 app.use('/api/plate', Plate);
 
 // for react router to work
-// app.get("/*", (req, res) => {
-//     res.sendFile(path.resolve("../client/dist/index.html"));
-// });
+app.get("/*", (req, res) => {
+    res.sendFile(path.resolve("../client/dist/index.html"));
+});
 
 app.get("/deleteUser", async (req, res) => {
     const user = await prisma.userLogin.deleteMany({})
