@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
+import Header from "./Header";
 
 export default function HomePage ({imageSrc, handleImageSrc}) {
 
@@ -62,6 +63,7 @@ export default function HomePage ({imageSrc, handleImageSrc}) {
 
     return(
         <>
+            <Header signedIn={true}/>
             <Navbar username={username}/>
             <div className="flex flex-col m-10">
                 <div className="flex flex-row justify-center items-start flex-wrap">

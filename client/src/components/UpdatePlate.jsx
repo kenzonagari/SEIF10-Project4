@@ -55,7 +55,7 @@ export default function UpdatePlate ({handleImageSrc}) {
     }, []);
 
     const handleDeletePlate = () => {
-        if(confirm("Are you sure? This process cannot be reversed.")){
+        if(confirm("Are you sure? This plate will be deleted permanently.")){
             fetch(`/api/plate/${plateId}`, {    
                 method: "DELETE", 
                 headers: {

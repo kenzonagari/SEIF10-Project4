@@ -4,7 +4,7 @@ import { ArcElement } from 'chart.js';
 import { Chart } from "chart.js/auto";
 import { Bar, Pie } from 'react-chartjs-2';
 
-export default function NutritionInfo ({plateIngredients, handleShowNutrition}) {
+export default function NutritionInfo ({plateIngredients, handleShowNutrition, bmi}) {
     const [data, setData] = useState([]);
     const [status, setStatus] = useState("loading");
     const navigate = useNavigate();
@@ -32,14 +32,17 @@ export default function NutritionInfo ({plateIngredients, handleShowNutrition}) 
               }
             );
             if (!response.ok) {
-              throw new Error("Network error");
+                if(response.status === 555){
+                    setStatus("error");
+                }
+                throw new Error("Network error");
             }
             const data = await response.json();
             setData(data);
             setStatus("done");
         } catch (error) {
-            setStatus("error");
             setData([]);
+            // setStatus("error");
         }};
 
         setStatus("loading");
@@ -55,6 +58,8 @@ export default function NutritionInfo ({plateIngredients, handleShowNutrition}) 
     const handleNavigate = () => {
         navigate("/addAPlate");
     }
+
+    console.log(bmi)
     
     const barLabel = [];
     const barValue = [];
@@ -142,6 +147,10 @@ export default function NutritionInfo ({plateIngredients, handleShowNutrition}) 
                 />
             </div>
         </div>
+        {/* <div className="m-20 snap-start">
+            <h1 className="font-extralight leading-snug text-2xl m-5 mt-6 text-center">With BMI of </h1>
+            <p className="font-extralight leading-snug text-md text-center">*Percent Daily Values are based on a 2000-calorie diet</p>
+        </div> */}
         <div className="m-20 snap-start">
             <h1 className="font-extralight leading-snug text-2xl m-5 mt-6 text-center">As part of your day-to-day meals, this plate fulfills a certain amount of <br/>your <b>daily nutritional requirement</b>*. Let's take a look!</h1>
             <p className="font-extralight leading-snug text-md text-center">*Percent Daily Values are based on a 2000-calorie diet</p>
@@ -213,7 +222,7 @@ export default function NutritionInfo ({plateIngredients, handleShowNutrition}) 
 
     return(
         <>
-        <div className="bg-white h-fit w-full m-10 p-10 rounded-xl border border-gray-200 shadow-xl snap-mandatory snap-y">
+        <div className="p-10 ">
             <h1 className="font-semibold leading-snug text-xl mt-0 mb-3 text-center">Nutritional Values of</h1>
             <div className="flex flex-row justify-center">
                 {ingredientList}

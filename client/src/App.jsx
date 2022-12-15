@@ -40,7 +40,6 @@ function App() {
     <div className="App flex flex-col justify-between w-screen h-screen bg-[url('/SVG/bg-img.svg')] bg-cover from-spray-50 to-green-200 overflow-x-hidden">
       <div>
         <BrowserRouter>
-        <Header />
           <Routes>
             <Route path="/home" element={ <Navigate to="/" /> }/>
             <Route path="/signIn" element={ <SignIn />}/> 
@@ -52,6 +51,7 @@ function App() {
               <Route path="userProfile" element={<UserProfile handleImageSrc={handleImageSrc}/>}/>
               <Route path="updatePlate/:plateId" element={<UpdatePlate handleImageSrc={handleImageSrc}/>}/>
             </Route>
+            <Route path="/*" element={ <Navigate to="/signUp" /> }/>
           </Routes>
         </BrowserRouter>
       </div>
