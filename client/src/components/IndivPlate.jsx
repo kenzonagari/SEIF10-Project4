@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-export default function IndivPlate ({plate, handleNutrition, plateId, handleScrollToSection}) {
+export default function IndivPlate ({plate, handleNutrition, plateId, handleScrollToSection, calories}) {
 
     const navigate = useNavigate();
 
@@ -30,6 +30,7 @@ export default function IndivPlate ({plate, handleNutrition, plateId, handleScro
             <div className="flex flex-col justify-between pl-0">
                 <div className="p-5">
                     {ingredientElement}
+                    <p className="font-semibold font-mono italic text-spray-800 tracking-tighter text-right">{calories} kcal</p>
                 </div>
                 <div className="text-right">
                     <button onClick={handleUpdatePlate} className="text-white text-sm bg-teal-500 hover:bg-teal-600 font-semibold w-fit p-2 px-3 m-2 rounded-full">

@@ -16,6 +16,7 @@ export default function UserPlates ({handleImageSrc}) {
     const [plateArray, setPlateArray] = useState([]);
     const [data, setData] = useState([]);
     const [plates, setPlates] = useState([]);
+    const [plateCalories, setPlateCalories] = useState([]);
     const [platesId, setPlatesId] = useState([]);
     const [bmi, setBmi] = useState([]);
     const [status, setStatus] = useState("");
@@ -45,12 +46,15 @@ export default function UserPlates ({handleImageSrc}) {
             setData(data);
             const platesTemp = [];
             const platesIdTemp = [];
+            const plateCaloriesTemp = [];
             for(const element of data[0].plates){
                 platesTemp.push(element.ingredients);
                 platesIdTemp.push(element.id);
+                plateCaloriesTemp.push(element.calories);
             }
             setPlates(platesTemp);
             setPlatesId(platesIdTemp);
+            setPlateCalories(plateCaloriesTemp);
             setBmi(((data[0]?.weight / data[0]?.height / data[0]?.height) * 10000).toFixed(1));
             setStatus("done");
         } catch (error) {
@@ -84,7 +88,7 @@ export default function UserPlates ({handleImageSrc}) {
 
     const plateElement = plates.map((plate, index) => {
         return(
-            <IndivPlate plate={plate} key={index} handleNutrition={handleNutrition} plateId={platesId[index]} handleScrollToSection={handleScrollToSection}/>
+            <IndivPlate plate={plate} key={index} handleNutrition={handleNutrition} plateId={platesId[index]} handleScrollToSection={handleScrollToSection} calories={plateCalories[index]}/>
         )
     })
 

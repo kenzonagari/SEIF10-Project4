@@ -7,6 +7,7 @@ export default function UpdatePlate ({handleImageSrc}) {
     const [status, setStatus] = useState("");
     const [ingredientNum, setIngredientNum] = useState(3);
     const [ingredients, setIngredients] = useState([]);
+    const [disableButton, setDisableButton] = useState(false);
     const navigate = useNavigate();
     const { plateId } = useParams();
 
@@ -76,6 +77,7 @@ export default function UpdatePlate ({handleImageSrc}) {
     
     const handleSubmit = (event) => {
         event.preventDefault();
+        setDisableButton(true);
         
         let myFormData = new FormData(event.target);
         let ingredientObj = Object.fromEntries(myFormData.entries());
@@ -106,8 +108,9 @@ export default function UpdatePlate ({handleImageSrc}) {
         .then((data) => {
             if(data.msg === 'plate updated'){
                 navigate("/userPlates");
+            } else {
+                setDisableButton(false);
             }
-            console.log(data)
         });
     }
 
@@ -158,12 +161,14 @@ export default function UpdatePlate ({handleImageSrc}) {
                     <div className="text-center">
                         <button 
                             type="button"
+                            disabled={disableButton}
                             onClick={handleDeletePlate}
                             className="text-white bg-spray-600 hover:bg-red-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-base px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 my-5">
                                 Delete Plate
                         </button>
                         <button 
                             type="submit"
+                            disabled={disableButton}
                             className="text-white bg-spray-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-base px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 my-5">
                                 Update Plate
                         </button>
