@@ -1,4 +1,4 @@
-# :hospital: GudFud
+# :green_salad: GudFud
 General Assembly SEIF 10 Capstone Project - PERN-based full-stack app
 
 GudFud is ...
