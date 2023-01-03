@@ -1,12 +1,14 @@
 # :green_salad: GudFud
 General Assembly SEIF 10 Capstone Project - PERN-based full-stack app
 
-GudFud is ...
+GudFud is a nutrition tracker and recipe logger app in which users can plan out their 'plates' more effectively.
 
 ## Motivation
-We want to simplify the user healthcare journey by accessing health information and services anytime and anywhere.
+A simple goal of mine to gain a bit of weight led to a deeper curiosity of what is actually in my plate - specifically, its caloric and nutritional contents. 
 
-In this portal, patient can create and update user profile, book appointment, view appointment and medication. Admin or healthcare professionals are able to create appointment summary and medication, read, update all user profiles and also delete appointment records.
+I saw an opportunity to create a simple app which takes in users' recipes or list of ingredients as input, and returns the corresponding caloric amount and nutritional contents. I found that through this opportunity, I could gain to learn PERN stack as I'd only used MERN in previous projects. Moreover, the project allows me to combine the use of relational database (via postgresQL) and external API - to store user data and fetch external nutritional data, respectively. 
+
+Ultimately, I'd like to create a web app that is both pretty and intuitive, and this app could be a chance to explore a good combination of functionality and aesthetics. 
 
 <img src="https://i.imgur.com/XxEBZnL.png" width="700">
 
