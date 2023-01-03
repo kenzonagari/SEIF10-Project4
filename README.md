@@ -1,7 +1,7 @@
 # :hospital: GudFud
-General Assembly SEIF 10 Project 3 - MERN-based full-stack app
+General Assembly SEIF 10 Capstone Project - PERN-based full-stack app
 
-HealthcarePal is a one-stop healthcare app for both patients and healthcare professionals to use, which covers appointment booking, appointment record-keeping and other things. 
+GudFud is ...
 
 ## Motivation
 We want to simplify the user healthcare journey by accessing health information and services anytime and anywhere.
