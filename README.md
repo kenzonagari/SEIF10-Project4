@@ -12,7 +12,7 @@ Ultimately, I'd like to create a web app that is both pretty and intuitive, and 
 
 <img src="https://i.imgur.com/1n1V2Ef.png" width="700">
 
-## 👩‍🦱 User Journey
+## :man: User Journey
 As a user, I would like to:
 
 (MVP)
@@ -48,7 +48,7 @@ Backend
 
 Nutritional data of recipes are taken from [EDAMAM API](https://developer.edamam.com/edamam-nutrition-api-demo)
 
-## Screenshots
+## :camera: Screenshots
 
 <img src="https://i.imgur.com/3uACsVO.png" width="700">
 <img src="https://i.imgur.com/lORpfiN.png" width="700">
