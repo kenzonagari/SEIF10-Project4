@@ -46,7 +46,7 @@ Backend
 4. JSON Web Token
 5. Udici
 
-Nutritional data of recipes are taken from [EDAMAM API](https://developer.edamam.com/edamam-nutrition-api-demo)
+Nutritional data of recipes are fetched from [EDAMAM API](https://developer.edamam.com/edamam-nutrition-api-demo)
 
 ## :camera: Screenshots
 
