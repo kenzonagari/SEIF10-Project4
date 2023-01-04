@@ -29,7 +29,8 @@ As a user, I would like to:
 3. Group plates into a daily meal planner.
 
 ## 🗃️ Flowchart
-After deciding on the CRUD actions users can perform, I decided on 3 main database models (with their relations notated): 
+After deciding on the CRUD actions users can perform, I decided on 3 main database models (with their relations notated):
+
 <img src="https://i.imgur.com/6s6Rgo6.png" width="500">
 
 ## 🔧 Technologies used
