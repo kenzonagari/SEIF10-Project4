@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 713.53 713.53">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient-2);
+        opacity: .29;
+        stroke-width: 5px;
+      }
+
+      .cls-2, .cls-3 {
+        stroke: #dbdbdb;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-3 {
+        fill: url(#linear-gradient);
+        opacity: .68;
+        stroke-width: 10px;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="165.47" y1="179.3" x2="666.42" y2="179.3" gradientTransform="translate(-83.67 462.49) rotate(-36.82)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9c9c9c"/>
+      <stop offset="0" stop-color="#9a9a9a" stop-opacity=".99"/>
+      <stop offset=".05" stop-color="#757575" stop-opacity=".76"/>
+      <stop offset=".11" stop-color="#565656" stop-opacity=".55"/>
+      <stop offset=".18" stop-color="#3b3b3b" stop-opacity=".38"/>
+      <stop offset=".25" stop-color="#252525" stop-opacity=".24"/>
+      <stop offset=".33" stop-color="#141414" stop-opacity=".13"/>
+      <stop offset=".44" stop-color="#080808" stop-opacity=".06"/>
+      <stop offset=".59" stop-color="#010101" stop-opacity=".01"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="221.43" y1="180.18" x2="608.74" y2="180.18" xlink:href="#linear-gradient"/>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <circle class="cls-1" cx="356.76" cy="356.76" r="356.76"/>
+    <circle class="cls-3" cx="356.76" cy="356.76" r="250.48"/>
+    <circle class="cls-2" cx="356.6" cy="357.99" r="193.66"/>
+  </g>
+</svg>
