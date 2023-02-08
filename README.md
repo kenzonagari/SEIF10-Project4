@@ -3,6 +3,8 @@ General Assembly SEIF 10 Capstone Project - PERN-based full-stack app
 
 GudFud is a nutrition tracker and recipe logger app in which users can plan out their 'plates' more effectively.
 
+Try it out! https://gudfud.herokuapp.com/
+
 ## :brain: Motivation
 A simple goal of gaining a bit of weight led me to a deeper curiosity of what is actually in my plate - specifically, its caloric and nutritional contents. 
 
@@ -56,11 +58,4 @@ Nutritional data of recipes are fetched from [EDAMAM API](https://developer.edam
 <img src="https://i.imgur.com/zeby2O5.png" width="700">
 <img src="https://i.imgur.com/zodlCOY.png" width="700">
 <img src="https://i.imgur.com/cwOqHA8.png" width="700">
-
-## :warning: Note
-
-The website is yet to be hosted for the time being. Thank you for your patience! 
-
-
-
 
