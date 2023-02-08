@@ -1,1 +1,21 @@
-{"scripts":{"dev":"turbo run dev","build":"turbo run build","postbuild":"cd server && npx prisma generate","start":"cd server && npm run start"},"devDependencies":{"turbo":"^1.6.3"},"workspaces":["*","apps/*","packages/*"],"dependencies":{"undici":"^5.14.0"}}
+{
+    "scripts": {
+        "dev": "turbo run dev",
+        "build": "turbo run build",
+        "postbuild": "cd server && npx prisma generate",
+        "start": "cd server && npm run start"
+    },
+    "devDependencies": {
+        "prisma": "^4.9.0",
+        "turbo": "^1.6.3"
+    },
+    "workspaces": [
+        "*",
+        "apps/*",
+        "packages/*"
+    ],
+    "dependencies": {
+        "@prisma/client": "^4.9.0",
+        "undici": "^5.14.0"
+    }
+}
